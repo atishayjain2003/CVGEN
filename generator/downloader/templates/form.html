@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Form</h1>
+        <form>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="linkedin">LinkedIn URL</label>
+            <input type="url" id="linkedin" name="linkedin" required>
+
+            <label for="website">Website URL</label>
+            <input type="url" id="website" name="website" required>
+
+            <label for="objective">Objective</label>
+            <textarea id="objective" name="objective" rows="4" required></textarea>
+
+            <label for="education1">Education 1</label>
+            <textarea id="education1" name="education1" rows="3" required></textarea>
+
+            <label for="education2">Education 2</label>
+            <textarea id="education2" name="education2" rows="3" required></textarea>
+
+            <label for="technical-skills">Technical Skills</label>
+            <textarea id="technical-skills" name="technical-skills" rows="3" required></textarea>
+
+            <label for="soft-skills">Soft Skills</label>
+            <textarea id="soft-skills" name="soft-skills" rows="3" required></textarea>
+
+            <label for="other-skills">Other Skills (XYZ)</label>
+            <textarea id="other-skills" name="other-skills" rows="3" required></textarea>
+
+            <label for="experience1">Experience 1</label>
+            <textarea id="experience1" name="experience1" rows="4" required></textarea>
+
+            <label for="experience2">Experience 2</label>
+            <textarea id="experience2" name="experience2" rows="4" required></textarea>
+
+            <label for="project1">Project 1</label>
+            <textarea id="project1" name="project1" rows="3" required></textarea>
+
+            <label for="project2">Project 2</label>
+            <textarea id="project2" name="project2" rows="3" required></textarea>
+
+            <label for="project3">Project 3</label>
+            <textarea id="project3" name="project3" rows="3" required></textarea>
+
+            <label for="activities">Extra-Curricular Activities</label>
+            <textarea id="activities" name="activities" rows="3" required></textarea>
+
+            <label for="leadership">Leadership</label>
+            <textarea id="leadership" name="leadership" rows="3" required></textarea>
+
+            <button type="submit">Generate Resume</button>
+        </form>
+    </div>
+</body>
+</html>
