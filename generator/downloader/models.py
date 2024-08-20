@@ -7,7 +7,8 @@ class Resume(models.Model):
     location = models.CharField(max_length=100)
     email = models.EmailField()
     linkedin = models.URLField()
-    website = models.URLField()
+    leetcode = models.URLField(default='')
+    github = models.URLField(default='')
 
     # Objective
     objective = models.TextField()
@@ -23,12 +24,10 @@ class Resume(models.Model):
 
     # Experience
     experience1 = models.TextField()
-    experience2 = models.TextField()
 
     # Projects
     project1 = models.TextField()
     project2 = models.TextField()
-    project3 = models.TextField()
 
     # Extra-Curricular Activities
     activities = models.TextField()

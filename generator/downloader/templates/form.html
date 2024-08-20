@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Form</title>
+    <title>Resume Form and Template</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,12 +16,16 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            text-align: center;
+        .form-container {
+            background-color: #fff; /* Background color for the form */
+        }
+        .resume-container {
+            background-color: #e9ecef; /* Different background color for the resume output */
+        }
+        h1, h2, h3 {
             color: #333;
         }
         label {
@@ -54,12 +58,39 @@
         button:hover {
             background-color: #4cae4c;
         }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .section ul li {
+            margin-bottom: 10px;
+        }
+        .projects ul li {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container form-container">
+        <!-- Resume Form -->
         <h1>Resume Form</h1>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required>
 
@@ -75,8 +106,11 @@
             <label for="linkedin">LinkedIn URL</label>
             <input type="url" id="linkedin" name="linkedin" required>
 
-            <label for="website">Website URL</label>
-            <input type="url" id="website" name="website" required>
+            <label for="leetcode">Leetcode URL</label>
+            <input type="url" id="leetcode" name="leetcode" required>
+
+            <label for="github">Github URL</label>
+            <input type="url" id="github" name="github" required>
 
             <label for="objective">Objective</label>
             <textarea id="objective" name="objective" rows="4" required></textarea>
@@ -93,23 +127,17 @@
             <label for="soft-skills">Soft Skills</label>
             <textarea id="soft-skills" name="soft-skills" rows="3" required></textarea>
 
-            <label for="other-skills">Other Skills (XYZ)</label>
+            <label for="other-skills">Other Skills</label>
             <textarea id="other-skills" name="other-skills" rows="3" required></textarea>
 
             <label for="experience1">Experience 1</label>
             <textarea id="experience1" name="experience1" rows="4" required></textarea>
-
-            <label for="experience2">Experience 2</label>
-            <textarea id="experience2" name="experience2" rows="4" required></textarea>
 
             <label for="project1">Project 1</label>
             <textarea id="project1" name="project1" rows="3" required></textarea>
 
             <label for="project2">Project 2</label>
             <textarea id="project2" name="project2" rows="3" required></textarea>
-
-            <label for="project3">Project 3</label>
-            <textarea id="project3" name="project3" rows="3" required></textarea>
 
             <label for="activities">Extra-Curricular Activities</label>
             <textarea id="activities" name="activities" rows="3" required></textarea>
@@ -119,6 +147,71 @@
 
             <button type="submit">Generate Resume</button>
         </form>
+    </div>
+    <br>
+    <div class="container resume-container">
+        <!-- Resume Template -->
+        <div class="contact-info">
+            {% for atishay in entry %}
+            <h1>{{ atishay.name }}</h1>
+            <p>+91 {{ atishay.phone }} ⋄ {{ atishay.location }}</p>
+            <p><a href="mailto:{{ atishay.email }}">Email</a>
+            <a href="{{ atishay.linkedin }}" target="_blank">LinkedIn</a>
+            <a href="{{ atishay.leetcode }}" target="_blank">Leetcode</a>
+            <a href="{{ atishay.github }}" target="_blank">Github</a></p>
+        </div>
+
+        <div class="section">
+            <h2>Objective</h2>
+            <p>{{ atishay.objective|linebreaksbr }}</p>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>{{ atishay.education1 }}</strong></li>
+                <li><strong>{{ atishay.education2 }}</strong></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                <li><strong>Technical Skills:</strong> {{ atishay.technical_skills|linebreaksbr }}</li>
+                <li><strong>Soft Skills:</strong> {{ atishay.soft_skills|linebreaksbr }}</li>
+                <li><strong>Other Skills:</strong> {{ atishay.other_skills|linebreaksbr }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+            <ul>
+                <li>{{ atishay.experience1|linebreaksbr }}</li>
+            </ul>
+        </div>
+
+        <div class="section projects">
+            <h2>Projects</h2>
+            <ul>
+                <li>{{ atishay.project1|linebreaksbr }}</li>
+                <li>{{ atishay.project2|linebreaksbr }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Extra-Curricular Activities and Achievements</h2>
+            <ul>
+                <li>{{ atishay.activities|linebreaksbr }}</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Leadership</h2>
+            <ul>
+                <li>{{ atishay.leadership|linebreaksbr }}</li>
+            </ul>
+        </div>
+        {% endfor %}
     </div>
 </body>
 </html>
